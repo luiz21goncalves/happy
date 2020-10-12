@@ -1,5 +1,6 @@
 import { FiPlus } from 'react-icons/fi';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 const Map = dynamic(async () => (await import('react-leaflet')).Map, {
   ssr: false
@@ -45,14 +46,16 @@ export default function OrphanagesMap({ mapbox_key }: OrphanagesMapProps) {
         />
       </Map>
 
-      <a href="/">
-        <FiPlus size={32} color="#fff" />
-      </a>
+      <Link href="/">
+        <a>
+          <FiPlus size={32} color="#fff" />
+        </a>
+      </Link>
     </Container>
   );
 }
 
-export const getServerSideProps: GetServerSideProps<OrphanagesMapProps> = () => {
+export const getServerSideProps: GetServerSideProps<OrphanagesMapProps> = async () => {
   const mapbox_key = process.env.MAPBOX_TOKEN;
 
   return {

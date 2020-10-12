@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import Link from 'next/link';
 
 import { Container, Wrapper, Location } from '../../styles/pages/Lading';
 
@@ -19,9 +20,11 @@ export default function Landing() {
           <span>Minas Gerais</span>
         </Location>
 
-        <a href="/app">
-          <FiArrowRight size={24} color="rgba(0, 0, 0, 0.6)" />
-        </a>
+        <Link href="/app">
+          <a>
+            <FiArrowRight size={24} color="rgba(0, 0, 0, 0.6)" />
+          </a>
+        </Link>
       </Wrapper>
     </Container>
   );
