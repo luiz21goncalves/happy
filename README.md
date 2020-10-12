@@ -7,17 +7,17 @@ Visite orfanatos e mude o dia
 de muitas **crianças**.
 
 ## O que será desenvolvido
-- [] front-end - **ReactJs**
-- [] front-end - **NextJS** (desafio)
-- [] api rest - **Express**
-- [] app mobile - **Expo**
+- [ ] front-end - **ReactJs**
+- [ ] front-end - **NextJS** (desafio)
+- [ ] api rest - **Express**
+- [ ] app mobile - **Expo**
 
 
 ## O que você precisa ter instalado
 
-- [] [NodeJS](https://nodejs.org/)
-- [] [Expo-cli](https://expo.io/learnhttps://expo.io/learn)
-- [] [Yarn](https://classic.yarnpkg.com/en/docs/install) (opcional)
+- [ ] [NodeJS](https://nodejs.org/)
+- [ ] [Expo-cli](https://expo.io/learnhttps://expo.io/learn)
+- [ ] [Yarn](https://classic.yarnpkg.com/en/docs/install) (opcional)
 
 
 ## Quer embarcar nesse foguete?
