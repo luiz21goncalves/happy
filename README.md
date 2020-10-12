@@ -21,4 +21,4 @@ de muitas **crianças**.
 
 
 ## Quer embarcar nesse foguete?
-[clique aqui](https://nextlevelweek.com/inscricao/3v) **NLW#3** Só vai ficar no ar até 18/10/2020 23:59:59
+[clique aqui](https://nextlevelweek.com/inscricao/3) **NLW#3** Só vai ficar no ar até 18/10/2020 23:59:59
