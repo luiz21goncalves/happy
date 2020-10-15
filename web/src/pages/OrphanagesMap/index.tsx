@@ -1,45 +1,78 @@
-import React from 'react';
-import { FiPlus } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import { FiArrowRight, FiPlus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+
+import api from '../../services/api';
 
 import mapMarkerImg from '../../images/map-marker.svg';
-
-import 'leaflet/dist/leaflet.css';
+import mapIcon from '../../utils/mapIcon';
 
 import { Container, Sidebar } from './styles';
 
-const OrphanagesMap: React.FC = () => (
-  <Container>
-    <Sidebar>
-      <header>
-        <img src={mapMarkerImg} alt="Happy" />
+interface Orphanage {
+  id: number;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
 
-        <h2>Escolha um orfanato no mapa</h2>
-        <p>Muitas crianças estão esperando a sua visita:)</p>
-      </header>
+const OrphanagesMap: React.FC = () => {
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
 
-      <footer>
-        <strong>Ipatinga</strong>
-        <span>Minas Gerais</span>
-      </footer>
-    </Sidebar>
+  useEffect(() => {
+    api.get('/orphanages').then(response => {
+      setOrphanages(response.data);
+    });
+  }, []);
 
-    <Map
-      center={[-19.4707569, -42.548012]}
-      zoom={15}
-      style={{ width: '100%', height: '100%', zIndex: 5 }}
-    >
-      {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
-      <TileLayer
-        url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-      />
-    </Map>
+  return (
+    <Container>
+      <Sidebar>
+        <header>
+          <img src={mapMarkerImg} alt="Happy" />
 
-    <Link to="/">
-      <FiPlus size={32} color="#fff" />
-    </Link>
-  </Container>
-);
+          <h2>Escolha um orfanato no mapa</h2>
+          <p>Muitas crianças estão esperando a sua visita:)</p>
+        </header>
+
+        <footer>
+          <strong>Ipatinga</strong>
+          <span>Minas Gerais</span>
+        </footer>
+      </Sidebar>
+
+      <Map
+        center={[-19.4707569, -42.548012]}
+        zoom={15}
+        style={{ width: '100%', height: '100%', zIndex: 5 }}
+      >
+        {/* <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" /> */}
+        <TileLayer
+          url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+        />
+
+        {orphanages.map(orphanage => (
+          <Marker
+            key={orphanage.id}
+            position={[orphanage.latitude, orphanage.longitude]}
+            icon={mapIcon}
+          >
+            <Popup closeButton={false} maxWidth={240} minWidth={240}>
+              {orphanage.name}
+              <Link to={`/orphanages/${orphanage.id}`}>
+                <FiArrowRight size={20} color="#fff" />
+              </Link>
+            </Popup>
+          </Marker>
+        ))}
+      </Map>
+
+      <Link to="/orphanages/create">
+        <FiPlus size={32} color="#fff" />
+      </Link>
+    </Container>
+  );
+};
 
 export default OrphanagesMap;
