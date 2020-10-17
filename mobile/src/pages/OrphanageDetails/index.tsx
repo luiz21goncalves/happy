@@ -35,7 +35,7 @@ interface Orphanage {
   about: string;
   instructions: string;
   opening_hours: string;
-  open_on_weekend: boolean;
+  open_on_weekends: boolean;
   images: OrphanageImage[];
 }
 
@@ -61,7 +61,7 @@ const OrphanageDetails: React.FC = () => {
 
   function handleOpenGoogleMapRoutes() {
     Linking.openURL(
-      `https://www.google.com/maps/dir/?api=1&destination=${orphanage.latitude},${orphanage.longitude}`,
+      `https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`,
     );
   }
 
@@ -128,7 +128,8 @@ const OrphanageDetails: React.FC = () => {
               Segunda à Sexta {orphanage.opening_hours}
             </Text>
           </View>
-          {orphanage.open_on_weekend ? (
+
+          {orphanage.open_on_weekends ? (
             <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
               <Feather name="info" size={40} color="#39CC83" />
               <Text style={[styles.scheduleText, styles.scheduleTextGreen]}>

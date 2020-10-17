@@ -29,6 +29,7 @@
     "prettier"
   ],
   "rules": {
+    "no-useless-return": "off",
     "react/jsx-one-expression-per-line": "off",
     "arrow-parens": ["error", "as-needed"],
     "camelcase": "off",
