@@ -29,6 +29,8 @@
     "prettier"
   ],
   "rules": {
+    "react/jsx-one-expression-per-line": "off",
+    "arrow-parens": ["error", "as-needed"],
     "camelcase": "off",
     "object-curly-newline": "off",
     "react/style-prop-object": "warn",
