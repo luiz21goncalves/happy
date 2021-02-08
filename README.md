@@ -7,10 +7,10 @@ Visite orfanatos e mude o dia
 de muitas **crianças**.
 
 ## O que será desenvolvido
-- [ ] front-end - **ReactJs**
-- [ ] front-end - **NextJS** (desafio)
-- [ ] api rest - **Express**
-- [ ] app mobile - **Expo**
+- [x] front-end - **ReactJs**
+- [x] front-end - **NextJS** (desafio)
+- [x] api rest - **Express**
+- [x] app mobile - **Expo**
 
 
 ## O que você precisa ter instalado
